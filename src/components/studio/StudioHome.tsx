@@ -55,7 +55,7 @@ const CARDS: SuiteCard[] = [
       'La aplicacion musical de Vortex Company con la que empezo la suite. Disponible como app independiente con el mismo soporte oficial.',
     icon: <Music2 className="w-6 h-6" aria-hidden />,
     accent: 'text-emerald-400',
-    url: null,
+    url: APP_URLS.music,
     status: 'externo',
   },
   {
