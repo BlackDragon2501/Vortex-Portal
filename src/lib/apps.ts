@@ -37,7 +37,7 @@ export const APP_URLS: {
   screen: 'https://vortex-screen.vercel.app',
   split: 'https://vortex-split.vercel.app',
   lens: 'https://vortex-lens-kohl.vercel.app',
-  convert: null,
-  color: null,
-  qr: null,
+  convert: 'https://vortex-convert.vercel.app',
+  color: 'https://vortex-color.vercel.app',
+  qr: 'https://vortex-qr-plum.vercel.app',
 }
