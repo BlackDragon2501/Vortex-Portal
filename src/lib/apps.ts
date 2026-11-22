@@ -20,6 +20,9 @@ export const APP_URLS: {
   screen: string | null
   split: string | null
   lens: string | null
+  convert: string | null
+  color: string | null
+  qr: string | null
 } = {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
@@ -34,4 +37,7 @@ export const APP_URLS: {
   screen: 'https://vortex-screen.vercel.app',
   split: 'https://vortex-split.vercel.app',
   lens: 'https://vortex-lens-kohl.vercel.app',
+  convert: null,
+  color: null,
+  qr: null,
 }

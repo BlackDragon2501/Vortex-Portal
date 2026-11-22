@@ -23,6 +23,9 @@ import {
   MonitorPlay,
   Combine,
   ScanText,
+  Repeat,
+  Palette,
+  QrCode,
 } from 'lucide-react'
 
 interface SuiteCard {
@@ -165,6 +168,36 @@ const CARDS: SuiteCard[] = [
     icon: <ScanText className="w-6 h-6" aria-hidden />,
     accent: 'text-cyan-400',
     url: APP_URLS.lens,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Convert',
+    tagline: 'Convierte tus imágenes, sin límites',
+    description:
+      'Conversor de formatos de imagen por lotes: PNG, JPG y WebP con calidad configurable, redimensionado opcional, relleno de fondo para transparencias y control de peso final, con descarga de todos los resultados de una vez. 100% local.',
+    icon: <Repeat className="w-6 h-6" aria-hidden />,
+    accent: 'text-orange-400',
+    url: APP_URLS.convert,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Color',
+    tagline: 'Tus colores, sin límites',
+    description:
+      'Extrae la paleta dominante de cualquier imagen con k-means, usa el cuentagotas en pantalla, convierte HEX/RGB/HSL, genera armonías cromáticas y comprueba el contraste WCAG AA/AAA de tus combinaciones. 100% local.',
+    icon: <Palette className="w-6 h-6" aria-hidden />,
+    accent: 'text-fuchsia-400',
+    url: APP_URLS.color,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex QR',
+    tagline: 'Crea tus códigos QR, sin límites',
+    description:
+      'Generador de códigos QR de URLs, texto, WiFi, contacto vCard, email, teléfono o SMS, con colores, tamaño, margen y nivel de corrección de error configurables, y descarga en PNG o SVG. 100% local.',
+    icon: <QrCode className="w-6 h-6" aria-hidden />,
+    accent: 'text-sky-400',
+    url: APP_URLS.qr,
     status: 'listo',
   },
 ]
