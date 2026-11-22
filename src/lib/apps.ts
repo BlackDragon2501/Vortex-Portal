@@ -16,6 +16,6 @@ export const APP_URLS: {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
   music: 'https://v-music-chi.vercel.app',
-  draw: null,
-  tasks: null,
+  draw: 'https://vortex-draw.vercel.app',
+  tasks: 'https://vortex-tasks.vercel.app',
 }
