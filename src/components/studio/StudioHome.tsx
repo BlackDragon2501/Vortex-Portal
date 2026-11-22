@@ -18,6 +18,11 @@ import {
   NotebookPen,
   ShieldCheck,
   ClipboardList,
+  ScanLine,
+  Mic,
+  MonitorPlay,
+  Combine,
+  ScanText,
 } from 'lucide-react'
 
 interface SuiteCard {
@@ -110,6 +115,56 @@ const CARDS: SuiteCard[] = [
     icon: <ClipboardList className="w-6 h-6" aria-hidden />,
     accent: 'text-lime-400',
     url: APP_URLS.clipboard,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Scan',
+    tagline: 'Escanea tus documentos, sin límites',
+    description:
+      'Escaner de documentos con la cámara o importado desde el dispositivo: aplanado de perspectiva, filtro blanco y negro, escala de grises y realce, y exportación a PDF, PNG o JPG. Incluye lector de QR y códigos de barras con la webcam. 100% local.',
+    icon: <ScanLine className="w-6 h-6" aria-hidden />,
+    accent: 'text-emerald-400',
+    url: APP_URLS.scan,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Voice',
+    tagline: 'Tu voz a texto, sin límites',
+    description:
+      'Dictado por voz con transcripción en tiempo real en PC y Android, con selección de idioma, cronómetro y guardado en .txt o envío directo a Vórtex Notes. 100% local.',
+    icon: <Mic className="w-6 h-6" aria-hidden />,
+    accent: 'text-violet-400',
+    url: APP_URLS.voice,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Screen',
+    tagline: 'Graba tu pantalla, sin límites',
+    description:
+      'Grabadora de pantalla para tutoriales en PC (pantalla, ventana o pestaña, con audio) y modo cámara en Android, con pausa, calidad ajustable y descarga en WebM o MP4. 100% local.',
+    icon: <MonitorPlay className="w-6 h-6" aria-hidden />,
+    accent: 'text-rose-400',
+    url: APP_URLS.screen,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Split',
+    tagline: 'Une tus imágenes, sin límites',
+    description:
+      'Combina dos o más imágenes (frente y dorso de documentos) en vertical u horizontal, con separación ajustable, control de compresión y descarga en PNG o JPG. 100% local.',
+    icon: <Combine className="w-6 h-6" aria-hidden />,
+    accent: 'text-amber-400',
+    url: APP_URLS.split,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Lens',
+    tagline: 'Lee el texto de tus imágenes, sin límites',
+    description:
+      'OCR con Tesseract.js directamente en tu navegador: extrae el texto de fotos y capturas (cámara o archivo) en varios idiomas, edítalo y cópialo o envíalo a Vórtex Notes. 100% local.',
+    icon: <ScanText className="w-6 h-6" aria-hidden />,
+    accent: 'text-cyan-400',
+    url: APP_URLS.lens,
     status: 'listo',
   },
 ]
@@ -211,7 +266,7 @@ export function StudioHome() {
           <a href={`mailto:${SUPPORT_EMAIL}`} className="text-violet-400 hover:text-violet-300 break-all">
             {SUPPORT_EMAIL}
           </a>{' '}
-          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor, Vórtex PDF, Vórtex Draw, Vórtex Tasks, Vórtex Notes, Vórtex Vault y Vórtex Clipboard.
+          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor, Vórtex PDF, Vórtex Draw, Vórtex Tasks, Vórtex Notes, Vórtex Vault, Vórtex Clipboard, Vórtex Scan, Vórtex Voice, Vórtex Screen, Vórtex Split y Vórtex Lens.
         </p>
       </main>
 

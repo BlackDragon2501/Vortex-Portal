@@ -15,6 +15,11 @@ export const APP_URLS: {
   notes: string | null
   vault: string | null
   clipboard: string | null
+  scan: string | null
+  voice: string | null
+  screen: string | null
+  split: string | null
+  lens: string | null
 } = {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
@@ -24,4 +29,9 @@ export const APP_URLS: {
   notes: 'https://vortex-notes-two.vercel.app',
   vault: 'https://vortex-vault.vercel.app',
   clipboard: 'https://vortex-clipboard.vercel.app',
+  scan: null,
+  voice: null,
+  screen: null,
+  split: null,
+  lens: null,
 }
