@@ -21,7 +21,7 @@ export const APP_URLS: {
   music: 'https://v-music-chi.vercel.app',
   draw: 'https://vortex-draw.vercel.app',
   tasks: 'https://vortex-tasks.vercel.app',
-  notes: null,
-  vault: null,
-  clipboard: null,
+  notes: 'https://vortex-notes-two.vercel.app',
+  vault: 'https://vortex-vault.vercel.app',
+  clipboard: 'https://vortex-clipboard.vercel.app',
 }
