@@ -15,6 +15,9 @@ import {
   ArrowRight,
   Brush,
   ListTodo,
+  NotebookPen,
+  ShieldCheck,
+  ClipboardList,
 } from 'lucide-react'
 
 interface SuiteCard {
@@ -77,6 +80,36 @@ const CARDS: SuiteCard[] = [
     icon: <ListTodo className="w-6 h-6" aria-hidden />,
     accent: 'text-teal-400',
     url: APP_URLS.tasks,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Notes',
+    tagline: 'Tus ideas, sin límites',
+    description:
+      'Notas con editor markdown y vista previa, diario con calendario y estados de ánimo, y enlaces rápidos para tus sitios de cada día, con búsqueda, etiquetas de colores y exportación. 100% local.',
+    icon: <NotebookPen className="w-6 h-6" aria-hidden />,
+    accent: 'text-sky-400',
+    url: APP_URLS.notes,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Vault',
+    tagline: 'Tus claves, sin límites',
+    description:
+      'Gestor de contraseñas cifrado con AES-256 que nunca sale de tu navegador: Web Crypto + IndexedDB, generador de contraseñas, medidor de seguridad, bloqueo automático y copias de respaldo cifradas. Cero nube.',
+    icon: <ShieldCheck className="w-6 h-6" aria-hidden />,
+    accent: 'text-fuchsia-400',
+    url: APP_URLS.vault,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Clipboard',
+    tagline: 'Tu portapapeles, sin límites',
+    description:
+      'Historial de lo que copias (captura con Ctrl+V) y snippets de los textos que usas a diario, con fijados, búsqueda y copia a un clic. 100% local.',
+    icon: <ClipboardList className="w-6 h-6" aria-hidden />,
+    accent: 'text-lime-400',
+    url: APP_URLS.clipboard,
     status: 'listo',
   },
 ]
@@ -178,7 +211,7 @@ export function StudioHome() {
           <a href={`mailto:${SUPPORT_EMAIL}`} className="text-violet-400 hover:text-violet-300 break-all">
             {SUPPORT_EMAIL}
           </a>{' '}
-          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor, Vórtex PDF, Vórtex Draw y Vórtex Tasks.
+          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor, Vórtex PDF, Vórtex Draw, Vórtex Tasks, Vórtex Notes, Vórtex Vault y Vórtex Clipboard.
         </p>
       </main>
 

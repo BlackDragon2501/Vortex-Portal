@@ -12,10 +12,16 @@ export const APP_URLS: {
   music: string | null
   draw: string | null
   tasks: string | null
+  notes: string | null
+  vault: string | null
+  clipboard: string | null
 } = {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
   music: 'https://v-music-chi.vercel.app',
   draw: 'https://vortex-draw.vercel.app',
   tasks: 'https://vortex-tasks.vercel.app',
+  notes: null,
+  vault: null,
+  clipboard: null,
 }
