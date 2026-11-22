@@ -13,7 +13,8 @@ import {
   Music2,
   Lock,
   ArrowRight,
-  Sparkles,
+  Brush,
+  ListTodo,
 } from 'lucide-react'
 
 interface SuiteCard {
@@ -60,13 +61,23 @@ const CARDS: SuiteCard[] = [
   },
   {
     name: 'Vórtex Draw',
-    tagline: 'Próximamente',
+    tagline: 'Dibuja, sin límites',
     description:
-      'Dibujo vectorial con pluma, curvas bezier y formas. El complemento creativo perfecto para Vórtex Editor.',
-    icon: <Sparkles className="w-6 h-6" aria-hidden />,
-    accent: 'text-sky-400',
-    url: null,
-    status: 'proximamente',
+      'Dibujo libre en tu navegador: pincel, borrador, línea, flecha, formas, bote de relleno, texto y cuentagotas, con deshacer/rehacer, fondo claro/oscuro, exportación PNG/JPG y proyectos .vortex-draw.json. 100% local.',
+    icon: <Brush className="w-6 h-6" aria-hidden />,
+    accent: 'text-pink-400',
+    url: APP_URLS.draw,
+    status: 'listo',
+  },
+  {
+    name: 'Vórtex Tasks',
+    tagline: 'Organiza tu día, sin límites',
+    description:
+      'Gestor de tareas estilo pro: proyectos con color, prioridades P1-P4, fechas con vencidas resaltadas, subtareas, filtros de Hoy y Próximos 7 días, búsqueda, añadido rápido inteligente (#proyecto, !p1, fechas) y exportación JSON. 100% local.',
+    icon: <ListTodo className="w-6 h-6" aria-hidden />,
+    accent: 'text-teal-400',
+    url: APP_URLS.tasks,
+    status: 'listo',
   },
 ]
 
@@ -167,7 +178,7 @@ export function StudioHome() {
           <a href={`mailto:${SUPPORT_EMAIL}`} className="text-violet-400 hover:text-violet-300 break-all">
             {SUPPORT_EMAIL}
           </a>{' '}
-          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor y Vórtex PDF.
+          — el mismo soporte de la misma compania para Vórtex Music, Vórtex Editor, Vórtex PDF, Vórtex Draw y Vórtex Tasks.
         </p>
       </main>
 

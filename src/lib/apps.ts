@@ -10,8 +10,12 @@ export const APP_URLS: {
   editor: string | null
   pdf: string | null
   music: string | null
+  draw: string | null
+  tasks: string | null
 } = {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
   music: 'https://v-music-chi.vercel.app',
+  draw: null,
+  tasks: null,
 }
