@@ -41,7 +41,7 @@ const CARDS: SuiteCard[] = [
     name: 'Vórtex Editor',
     tagline: 'Tu editor, sin límites',
     description:
-      'Editor de imágenes profesional con capas, capas de ajuste, curvas, filtros, herramientas de dibujo, transformacion libre e IA. Todo local en tu navegador.',
+      'Editor de imagenes profesional con capas, capas de ajuste, curvas, filtros, herramientas de dibujo, transformacion libre e IA: ahora elimina texto y marcas de agua con inpainting neuronal LaMa (WebGPU, modelo guardado en tu dispositivo). Todo local en tu navegador.',
     icon: <ImageIcon className="w-6 h-6" aria-hidden />,
     accent: 'text-amber-400',
     url: APP_URLS.editor,
