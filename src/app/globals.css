@@ -463,3 +463,26 @@ body {
   }
   .hud-reveal { opacity: 1; }
 }
+
+/* ---------- aves del portal: guardabarranco se mece (como los motmots reales) ---------- */
+.hud-bird-swing {
+  transform-box: fill-box;
+  transform-origin: 50% 85%;
+  animation: hud-swing 3.4s ease-in-out infinite alternate;
+}
+@keyframes hud-swing {
+  from { transform: rotate(-2.4deg); }
+  to { transform: rotate(2.4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-bird-swing { animation: none; }
+}
+
+/* ---------- posicion de las aves sobre el anillo del portal ---------- */
+.hud-bird-left { left: 14.5%; bottom: 19.5%; width: 12.5%; }
+.hud-bird-right { right: 10.5%; bottom: 20%; width: 14.5%; }
+/* en movil perchan sobre los anillos superiores para no pisar el titulo */
+@media (max-width: 767px) {
+  .hud-bird-left { left: 5.5%; bottom: auto; top: 4.5%; width: 17%; }
+  .hud-bird-right { right: 4%; bottom: auto; top: 5.5%; width: 19%; }
+}

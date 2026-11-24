@@ -9,6 +9,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { APP_URLS } from '@/lib/apps'
 import { LegalFooter, SUPPORT_EMAIL, VortexLogo } from '../editor/Branding'
+import { NicaraguaFlag, Guardabarranco, Crow, WaveFilterDef } from './HudNicaragua'
 import {
   Image as ImageIcon,
   FileText,
@@ -616,6 +617,9 @@ export function StudioHome() {
 
   return (
     <div className="min-h-screen w-full flex flex-col relative bg-[#04120f] text-foreground">
+      {/* filtro de ondulacion para la bandera (definicion unica) */}
+      <WaveFilterDef />
+
       {/* fondo + particulas */}
       <div className="hud-bg" aria-hidden />
       <div className="hud-vignette" aria-hidden />
@@ -638,7 +642,16 @@ export function StudioHome() {
       ))}
 
       {/* decorado lateral izquierdo (solo pantallas grandes) */}
-      <div className="fixed left-6 top-32 z-0 hidden lg:flex flex-col items-center gap-8 opacity-80 pointer-events-none" aria-hidden>
+      <div className="fixed left-6 top-24 z-0 hidden lg:flex flex-col items-center gap-7 opacity-80 pointer-events-none" aria-hidden>
+        {/* bandera de Nicaragua ondeando con marco HUD */}
+        <div className="relative w-44">
+          <span className="hud-corner hud-corner-tl" />
+          <span className="hud-corner hud-corner-tr" />
+          <span className="hud-corner hud-corner-bl" />
+          <span className="hud-corner hud-corner-br" />
+          <NicaraguaFlag className="w-full" />
+          <p className="text-center text-[9px] tracking-[0.3em] text-teal-300/90 mt-1.5">HECHO EN NICARAGUA</p>
+        </div>
         <div className="w-28 h-28"><HudRadar /></div>
         <HudStatusPanel total={total} online={onlineCount} deploy={deployCount} />
         <div className="w-44"><HudBars /></div>
@@ -659,7 +672,8 @@ export function StudioHome() {
           <span className="text-teal-50">STUDIO</span>
         </span>
         <span className="text-[10px] text-teal-200/50 tracking-widest hidden md:inline">SUITE DE CREACIÓN · VORTEX COMPANY</span>
-        <span className="ml-auto flex items-center gap-2">
+        <span className="ml-auto flex items-center gap-2.5">
+          <NicaraguaFlag className="w-7 h-[17px]" style={{ borderRadius: 2 }} />
           <span className="hud-live-dot w-2 h-2 rounded-full bg-teal-300" aria-hidden />
           <span className="text-[10px] tracking-widest text-teal-200/80 hidden sm:inline">GRATIS · SIN ANUNCIOS · 100% LOCAL</span>
         </span>
@@ -669,7 +683,18 @@ export function StudioHome() {
       <main className="relative z-10 flex-1 w-full max-w-6xl mx-auto px-6 pb-14 flex flex-col items-center">
         {/* hero */}
         <div className="w-full flex flex-col items-center -mt-2">
-          <HoloPortal />
+            {/* hero con aves posadas sobre el anillo inferior */}
+        <div className="relative w-full flex justify-center">
+          <div className="relative w-full max-w-2xl">
+            <HoloPortal />
+            <Guardabarranco
+              className="hud-bird-left absolute drop-shadow-[0_0_10px_rgba(45,242,208,0.25)]"
+            />
+            <Crow
+              className="hud-bird-right absolute"
+            />
+          </div>
+        </div>
           <h1
             className="hud-title text-3xl md:text-4xl font-extrabold tracking-[0.12em] -mt-16 md:-mt-20 relative z-10 text-center"
           >
@@ -741,6 +766,9 @@ export function StudioHome() {
             {SUPPORT_EMAIL}
           </a>{' '}
           — el mismo soporte de la misma compania para toda la familia de apps de Vortex Company.
+        </p>
+        <p className="text-[11px] tracking-[0.24em] text-teal-300/80 mt-3 text-center uppercase" style={{ textShadow: '0 0 10px rgba(45,242,208,0.3)' }}>
+          Hecho con orgullo en Nicaragua · América Central
         </p>
       </main>
 
