@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#161616",
+  themeColor: "#04120f",
   width: "device-width",
   initialScale: 1,
 };
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
-      <body className="antialiased bg-[#121212] text-foreground">
+      <body className="antialiased bg-[#04120f] text-foreground">
         {children}
         <Toaster />
       </body>

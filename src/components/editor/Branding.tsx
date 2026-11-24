@@ -83,7 +83,7 @@ export function LegalFooter({ product = 'editor' }: { product?: VortexProduct })
   return (
     <footer
       aria-label={`Información legal de ${name.first} ${name.second}`}
-      className="mt-auto border-t border-border bg-[#121212] text-muted-foreground"
+      className="mt-auto border-t border-teal-400/15 bg-[#04120f] text-muted-foreground relative z-10"
     >
       <div className="max-w-3xl mx-auto px-6 py-8 flex flex-col items-center text-center gap-1.5">
         <div className="flex items-center gap-2.5 mb-1">
