@@ -9,7 +9,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { APP_URLS } from '@/lib/apps'
 import { LegalFooter, SUPPORT_EMAIL, VortexLogo } from '../editor/Branding'
-import { NicaraguaFlag, Guardabarranco, Crow, WaveFilterDef } from './HudNicaragua'
+import { NicaraguaFlag, WaveFilterDef } from './HudNicaragua'
+import { HudSpider, HudBootTerminal, HudChartBars } from './HudCrawler'
 import {
   Image as ImageIcon,
   FileText,
@@ -683,16 +684,14 @@ export function StudioHome() {
       <main className="relative z-10 flex-1 w-full max-w-6xl mx-auto px-6 pb-14 flex flex-col items-center">
         {/* hero */}
         <div className="w-full flex flex-col items-center -mt-2">
-            {/* hero con aves posadas sobre el anillo inferior */}
+            {/* hero: araña web-crawler recorriendo el túnel, terminal de arranque
+            a la izquierda y telemetría de barras a la derecha */}
         <div className="relative w-full flex justify-center">
           <div className="relative w-full max-w-2xl">
             <HoloPortal />
-            <Guardabarranco
-              className="hud-bird-left absolute drop-shadow-[0_0_10px_rgba(45,242,208,0.25)]"
-            />
-            <Crow
-              className="hud-bird-right absolute"
-            />
+            <HudSpider />
+            <HudBootTerminal />
+            <HudChartBars />
           </div>
         </div>
           <h1

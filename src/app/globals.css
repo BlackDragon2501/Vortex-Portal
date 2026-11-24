@@ -486,3 +486,93 @@ body {
   .hud-bird-left { left: 5.5%; bottom: auto; top: 4.5%; width: 17%; }
   .hud-bird-right { right: 4%; bottom: auto; top: 5.5%; width: 19%; }
 }
+
+/* ============================================================
+   ARAÑA WEB-CRAWLER · TERMINAL DE ARRANQUE · TELEMETRÍA
+   ============================================================ */
+
+/* caminata de la araña sobre el arco central del anillo inferior (ida y vuelta) */
+.hud-spider-crawl {
+  animation: hud-crawl 18s ease-in-out infinite alternate;
+}
+@keyframes hud-crawl {
+  0%   { left: 30%; top: 61.5%; }
+  50%  { left: 50%; top: 57.5%; }
+  100% { left: 70%; top: 61.5%; }
+}
+/* en móvil recorre el anillo superior para no pisar el título */
+@keyframes hud-crawl-top {
+  0%   { left: 27%; top: 16%; }
+  50%  { left: 50%; top: 12%; }
+  100% { left: 73%; top: 16%; }
+}
+@media (max-width: 767px) {
+  .hud-spider-crawl {
+    animation-name: hud-crawl-top;
+    animation-duration: 20s;
+  }
+}
+
+/* ciclo de caminata: piernas articuladas (rotan desde su anclaje exacto) */
+.hud-leg {
+  transform-box: view-box;
+  animation: hud-leg-swing 0.82s ease-in-out infinite alternate;
+}
+@keyframes hud-leg-swing {
+  from { transform: rotate(-12deg); }
+  to   { transform: rotate(12deg); }
+}
+/* balanceo vertical sutil del cuerpo sincronizado con el paso */
+.hud-spider-body {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: hud-spider-bob 0.82s ease-in-out infinite alternate;
+}
+@keyframes hud-spider-bob {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-1.6px); }
+}
+
+/* caret parpadeante del terminal (keyframe propia, no pisa hud-blink) */
+.hud-caret {
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 5px;
+  vertical-align: -1px;
+  background: #2df2d0;
+  box-shadow: 0 0 6px rgba(45, 242, 208, 0.6);
+  animation: hud-caret-blink 1.05s step-end infinite;
+}
+@keyframes hud-caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+/* barra de progreso del arranque: gradiente verde neón -> cian */
+.hud-boot-bar {
+  background: linear-gradient(90deg, #2df2d0, #22e6ff);
+  box-shadow: 0 0 9px rgba(45, 242, 208, 0.55);
+  transition: width 0.12s linear;
+}
+
+/* telemetría: crecimiento y decrecimiento continuo de las barras */
+.hud-chart-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: hud-chart-grow 3s ease-in-out infinite alternate;
+}
+@keyframes hud-chart-grow {
+  from { transform: scaleY(0.3); }
+  to   { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-spider-crawl,
+  .hud-leg,
+  .hud-spider-body,
+  .hud-caret,
+  .hud-chart-bar {
+    animation: none !important;
+  }
+}
