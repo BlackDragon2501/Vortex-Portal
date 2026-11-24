@@ -488,49 +488,61 @@ body {
 }
 
 /* ============================================================
-   ARAÑA WEB-CRAWLER · TERMINAL DE ARRANQUE · TELEMETRÍA
+   ESCORPIÓN HOLO · TERMINAL DE ARRANQUE · TELEMETRÍA
    ============================================================ */
 
-/* caminata de la araña sobre el arco central del anillo inferior (ida y vuelta) */
-.hud-spider-crawl {
-  animation: hud-crawl 18s ease-in-out infinite alternate;
-}
-@keyframes hud-crawl {
-  0%   { left: 30%; top: 61.5%; }
-  50%  { left: 50%; top: 57.5%; }
-  100% { left: 70%; top: 61.5%; }
-}
-/* en móvil recorre el anillo superior para no pisar el título */
-@keyframes hud-crawl-top {
-  0%   { left: 27%; top: 16%; }
-  50%  { left: 50%; top: 12%; }
-  100% { left: 73%; top: 16%; }
-}
-@media (max-width: 767px) {
-  .hud-spider-crawl {
-    animation-name: hud-crawl-top;
-    animation-duration: 20s;
-  }
+/* el escorpión holo pasea por toda la pantalla vía requestAnimationFrame
+   (trayectoria de Lissajous en HudScorpion.tsx); aquí solo su apariencia */
+.hud-scorpion {
+  opacity: 0.92;
+  filter: drop-shadow(0 0 8px rgba(45, 242, 208, 0.35));
+  will-change: transform;
 }
 
-/* ciclo de caminata: piernas articuladas (rotan desde su anclaje exacto) */
+/* ciclo de caminata: patas articuladas (rotan desde su anclaje exacto) */
 .hud-leg {
   transform-box: view-box;
-  animation: hud-leg-swing 0.82s ease-in-out infinite alternate;
+  animation: hud-leg-swing 0.6s ease-in-out infinite alternate;
 }
 @keyframes hud-leg-swing {
   from { transform: rotate(-12deg); }
   to   { transform: rotate(12deg); }
 }
 /* balanceo vertical sutil del cuerpo sincronizado con el paso */
-.hud-spider-body {
+.hud-scorpion-body {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: hud-spider-bob 0.82s ease-in-out infinite alternate;
+  animation: hud-bug-bob 0.6s ease-in-out infinite alternate;
 }
-@keyframes hud-spider-bob {
+@keyframes hud-bug-bob {
   from { transform: translateY(0px); }
-  to   { transform: translateY(-1.6px); }
+  to   { transform: translateY(-1.4px); }
+}
+
+/* pinzas que palpan (desincronizadas) */
+.hud-claw-a {
+  transform-box: view-box;
+  transform-origin: 64px 35px;
+  animation: hud-claw-a 1.3s ease-in-out infinite alternate;
+}
+@keyframes hud-claw-a {
+  from { transform: rotate(-3deg); }
+  to   { transform: rotate(3.5deg); }
+}
+.hud-claw-b {
+  transform-box: view-box;
+  transform-origin: 64px 45px;
+  animation: hud-claw-a 1.3s ease-in-out infinite alternate-reverse;
+}
+/* cola en S ondeando como un látigo lento */
+.hud-tail-wave {
+  transform-box: view-box;
+  transform-origin: 38px 40px;
+  animation: hud-tail-wave 2.6s ease-in-out infinite alternate;
+}
+@keyframes hud-tail-wave {
+  from { transform: rotate(-4.5deg); }
+  to   { transform: rotate(5deg); }
 }
 
 /* caret parpadeante del terminal (keyframe propia, no pisa hud-blink) */
@@ -568,9 +580,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hud-spider-crawl,
   .hud-leg,
-  .hud-spider-body,
+  .hud-scorpion-body,
+  .hud-claw-a,
+  .hud-tail-wave,
   .hud-caret,
   .hud-chart-bar {
     animation: none !important;

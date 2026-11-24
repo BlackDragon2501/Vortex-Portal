@@ -1,88 +1,11 @@
 'use client'
 
-// Decorados del hero de Vórtex Studio: araña web-crawler cyberpunk que recorre
-// las líneas del túnel holográfico, terminal de arranque con contador 0-100%
-// en bucle infinito y panel de telemetría con barras verde neón/cian animadas.
-// Todo SVG/CSS puro (cero assets externos), coherente con el estilo HUD teal.
+// Decorados del hero de Vórtex Studio: terminal de arranque con contador
+// 0-100% en bucle infinito y panel de telemetría con barras verde neón/cian
+// animadas. (El escorpión holo vive en HudScorpion.tsx.) Todo SVG/CSS puro
+// (cero assets externos), coherente con el estilo HUD teal.
 
 import { useEffect, useState } from 'react'
-
-/* ---------- araña web-crawler (caminata infinita sobre el anillo) ---------- */
-// Cada pierna se anima rotando alrededor de su punto de anclaje exacto
-// (transform-box: view-box + transform-origin en px del viewBox).
-const LEGS: Array<{ d: string; x: number; y: number; delay: number }> = [
-  { d: 'M52 46 L34 30 L19 34', x: 52, y: 46, delay: 0 },
-  { d: 'M50 52 L27 47 L12 56', x: 50, y: 52, delay: 0.18 },
-  { d: 'M50 59 L27 66 L13 77', x: 50, y: 59, delay: 0.36 },
-  { d: 'M53 66 L36 81 L25 89', x: 53, y: 66, delay: 0.54 },
-  { d: 'M68 46 L86 30 L101 34', x: 68, y: 46, delay: 0.18 },
-  { d: 'M70 52 L93 47 L108 56', x: 70, y: 52, delay: 0.36 },
-  { d: 'M70 59 L93 66 L107 77', x: 70, y: 59, delay: 0.54 },
-  { d: 'M67 66 L84 81 L95 89', x: 67, y: 66, delay: 0 },
-]
-
-const JOINTS: Array<[number, number]> = [
-  [34, 30],
-  [27, 47],
-  [27, 66],
-  [36, 81],
-  [86, 30],
-  [93, 47],
-  [93, 66],
-  [84, 81],
-]
-
-export function HudSpider() {
-  return (
-    <div className="hud-spider-crawl absolute z-0 w-[11%]" aria-hidden>
-      <svg
-        viewBox="0 0 120 92"
-        className="w-full"
-        style={{ filter: 'drop-shadow(0 0 7px rgba(45,242,208,0.3))' }}
-      >
-        {/* 8 piernas articuladas (ciclo de caminata cruzado) */}
-        {LEGS.map((l, i) => (
-          <path
-            key={i}
-            d={l.d}
-            fill="none"
-            stroke="rgba(45,242,208,0.78)"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="hud-leg"
-            style={{ transformOrigin: `${l.x}px ${l.y}px`, animationDelay: `${l.delay}s` }}
-          />
-        ))}
-        {/* juntas cian */}
-        {JOINTS.map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="1.5" fill="#22e6ff" opacity="0.85" />
-        ))}
-        <g className="hud-spider-body">
-          {/* sensores cian */}
-          <path
-            d="M56 22 L54 17 M64 22 L66 17"
-            stroke="rgba(34,230,255,0.8)"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            fill="none"
-          />
-          <circle cx="54" cy="16" r="1.3" fill="#22e6ff" />
-          <circle cx="66" cy="16" r="1.3" fill="#22e6ff" />
-          {/* abdomen con circuito */}
-          <ellipse cx="60" cy="36" rx="13.5" ry="15.5" fill="#07231c" stroke="rgba(45,242,208,0.8)" strokeWidth="1.6" />
-          <path d="M60 26 V33 M54 38 H66" stroke="rgba(45,242,208,0.45)" strokeWidth="1" fill="none" />
-          <path d="M60 41 l4 2.5 v5 l-4 2.5 l-4 -2.5 v-5 Z" fill="none" stroke="rgba(45,242,208,0.55)" strokeWidth="1" />
-          {/* cefalotórax + visor holográfico */}
-          <ellipse cx="60" cy="57" rx="8.5" ry="7.5" fill="#07231c" stroke="rgba(45,242,208,0.9)" strokeWidth="1.6" />
-          <circle cx="60" cy="57" r="4" fill="#8effe4" className="hud-core" />
-          {/* quelíceros */}
-          <path d="M57 64 V69 M63 64 V69" stroke="rgba(45,242,208,0.7)" strokeWidth="1.4" strokeLinecap="round" fill="none" />
-        </g>
-      </svg>
-    </div>
-  )
-}
 
 /* ---------- terminal de arranque: "Iniciando..." 0% -> 100% en bucle ---------- */
 const BOOT_TICKS = 112 // tick 0..112 => 0..100% (~4 s), luego pausa "listo" y reinicia

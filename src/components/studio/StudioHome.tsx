@@ -10,7 +10,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { APP_URLS } from '@/lib/apps'
 import { LegalFooter, SUPPORT_EMAIL, VortexLogo } from '../editor/Branding'
 import { NicaraguaFlag, WaveFilterDef } from './HudNicaragua'
-import { HudSpider, HudBootTerminal, HudChartBars } from './HudCrawler'
+import { HudBootTerminal, HudChartBars } from './HudHero'
+import { HudScorpion } from './HudScorpion'
 import {
   Image as ImageIcon,
   FileText,
@@ -642,6 +643,9 @@ export function StudioHome() {
         />
       ))}
 
+      {/* escorpión holográfico de Vortex Company paseando por toda la pantalla */}
+      <HudScorpion />
+
       {/* decorado lateral izquierdo (solo pantallas grandes) */}
       <div className="fixed left-6 top-24 z-0 hidden lg:flex flex-col items-center gap-7 opacity-80 pointer-events-none" aria-hidden>
         {/* bandera de Nicaragua ondeando con marco HUD */}
@@ -684,12 +688,11 @@ export function StudioHome() {
       <main className="relative z-10 flex-1 w-full max-w-6xl mx-auto px-6 pb-14 flex flex-col items-center">
         {/* hero */}
         <div className="w-full flex flex-col items-center -mt-2">
-            {/* hero: araña web-crawler recorriendo el túnel, terminal de arranque
-            a la izquierda y telemetría de barras a la derecha */}
+            {/* hero: terminal de arranque a la izquierda, telemetría de barras a la
+            derecha; el escorpión holo pasea libre por toda la pantalla */}
         <div className="relative w-full flex justify-center">
           <div className="relative w-full max-w-2xl">
             <HoloPortal />
-            <HudSpider />
             <HudBootTerminal />
             <HudChartBars />
           </div>
