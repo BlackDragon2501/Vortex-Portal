@@ -23,6 +23,20 @@ export const APP_URLS: {
   convert: string | null
   color: string | null
   qr: string | null
+  compress: string | null
+  media: string | null
+  tts: string | null
+  formatter: string | null
+  sub: string | null
+  hashpass: string | null
+  calc: string | null
+  watermark: string | null
+  splitav: string | null
+  clean: string | null
+  ink: string | null
+  math: string | null
+  invoice: string | null
+  chef: string | null
 } = {
   editor: 'https://vortex-editor-omega.vercel.app',
   pdf: 'https://vortex-pdf-blush.vercel.app',
@@ -40,4 +54,18 @@ export const APP_URLS: {
   convert: 'https://vortex-convert.vercel.app',
   color: 'https://vortex-color.vercel.app',
   qr: 'https://vortex-qr-plum.vercel.app',
+  compress: 'https://vortex-compress.vercel.app',
+  media: 'https://vortex-media-green.vercel.app',
+  tts: 'https://vortex-tts.vercel.app',
+  formatter: 'https://vortex-formatter.vercel.app',
+  sub: 'https://vortex-sub.vercel.app',
+  hashpass: 'https://vortex-hash-pass.vercel.app',
+  calc: 'https://vortex-calc.vercel.app',
+  watermark: 'https://vortex-watermark.vercel.app',
+  splitav: 'https://vortex-splitav.vercel.app',
+  clean: 'https://vortex-clean.vercel.app',
+  ink: 'https://vortex-ink.vercel.app',
+  math: 'https://vortex-math.vercel.app',
+  invoice: 'https://vortex-invoice.vercel.app',
+  chef: 'https://vortex-chef.vercel.app',
 }

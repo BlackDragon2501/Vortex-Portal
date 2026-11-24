@@ -11,7 +11,7 @@ import { APP_URLS } from '@/lib/apps'
 import { LegalFooter, SUPPORT_EMAIL, VortexLogo } from '../editor/Branding'
 import { NicaraguaFlag, WaveFilterDef } from './HudNicaragua'
 import { HudBootTerminal, HudChartBars } from './HudHero'
-import { HudScorpion } from './HudScorpion'
+import { HudScorpions } from './HudScorpion'
 import {
   Image as ImageIcon,
   FileText,
@@ -228,7 +228,7 @@ const CARDS: SuiteCard[] = [
       'Crea archivos ZIP con nivel de compresión ajustable (0-9, motor fflate) y extrae ZIPs marcando solo lo que te interesa. Todo se procesa dentro de tu navegador y tus archivos nunca salen de tu equipo. 100% local.',
     icon: <FileArchive className="w-6 h-6" aria-hidden />,
     accent: 'text-teal-300',
-    url: null,
+    url: APP_URLS.compress,
     status: 'listo',
   },
   {
@@ -238,7 +238,7 @@ const CARDS: SuiteCard[] = [
       'Convierte MP4 a WebM, extrae el audio a MP3 o AAC y comprime video H.264 con CRF y resolución ajustables, usando FFmpeg WebAssembly que corre dentro de tu navegador (el motor se sirve desde la propia app). 100% local.',
     icon: <Film className="w-6 h-6" aria-hidden />,
     accent: 'text-cyan-300',
-    url: null,
+    url: APP_URLS.media,
     status: 'listo',
   },
   {
@@ -248,7 +248,7 @@ const CARDS: SuiteCard[] = [
       'Pega un texto, carga una nota .txt/.md o un PDF y escúchalo en voz alta con las voces de tu propio sistema (Web Speech API), controlando velocidad, tono, voz y el fragmento actual con panel de lectura resaltado. 100% local.',
     icon: <Volume2 className="w-6 h-6" aria-hidden />,
     accent: 'text-emerald-300',
-    url: null,
+    url: APP_URLS.tts,
     status: 'listo',
   },
   {
@@ -258,7 +258,7 @@ const CARDS: SuiteCard[] = [
       'Formatea y valida JSON con estadísticas, minifica, ordena claves, convierte Base64/Base64-URL, decodifica URLs y JWT (solo inspección), y calcula hashes MD5 y SHA-1/256/384/512. Todo en tu navegador. 100% local.',
     icon: <Braces className="w-6 h-6" aria-hidden />,
     accent: 'text-sky-300',
-    url: null,
+    url: APP_URLS.formatter,
     status: 'listo',
   },
   {
@@ -268,7 +268,7 @@ const CARDS: SuiteCard[] = [
       'Edita y sincroniza subtítulos SRT y VTT sobre la previsualización del video, con ajuste global de tiempos, renumerado y exportación limpia. 100% local.',
     icon: <Captions className="w-6 h-6" aria-hidden />,
     accent: 'text-teal-200',
-    url: null,
+    url: APP_URLS.sub,
     status: 'listo',
   },
   {
@@ -278,7 +278,7 @@ const CARDS: SuiteCard[] = [
       'Genera contraseñas fuertes y frases de paso, evalúa su fortaleza y calcula hashes MD5, SHA-1, SHA-256 y SHA-512 de textos y archivos con Web Crypto. 100% local.',
     icon: <KeyRound className="w-6 h-6" aria-hidden />,
     accent: 'text-lime-300',
-    url: null,
+    url: APP_URLS.hashpass,
     status: 'listo',
   },
   {
@@ -288,7 +288,7 @@ const CARDS: SuiteCard[] = [
       'Calculadora científica con grados/radianes, memoria e historial guardado en tu equipo, más conversor de unidades offline (longitud, masa, temperatura, datos y más). 100% local.',
     icon: <Calculator className="w-6 h-6" aria-hidden />,
     accent: 'text-cyan-200',
-    url: null,
+    url: APP_URLS.calc,
     status: 'listo',
   },
   {
@@ -298,7 +298,7 @@ const CARDS: SuiteCard[] = [
       'Aplica tu logo o texto como marca de agua a lotes de imágenes y PDFs, con posición, opacidad, rotación, mosaico y descarga en ZIP. 100% local.',
     icon: <Stamp className="w-6 h-6" aria-hidden />,
     accent: 'text-emerald-200',
-    url: null,
+    url: APP_URLS.watermark,
     status: 'listo',
   },
   {
@@ -308,7 +308,7 @@ const CARDS: SuiteCard[] = [
       'Corta y une video o audio por rangos de tiempo exactos con FFmpeg WebAssembly corriendo dentro de tu navegador. Tus archivos nunca salen de tu equipo. 100% local.',
     icon: <Scissors className="w-6 h-6" aria-hidden />,
     accent: 'text-teal-400',
-    url: null,
+    url: APP_URLS.splitav,
     status: 'listo',
   },
   {
@@ -318,7 +318,7 @@ const CARDS: SuiteCard[] = [
       'Elimina EXIF, GPS y XMP de tus fotos JPEG, PNG y WebP por lotes, con reporte de lo detectado y descarga en ZIP. Tu privacidad no sale de tu navegador. 100% local.',
     icon: <Eraser className="w-6 h-6" aria-hidden />,
     accent: 'text-sky-200',
-    url: null,
+    url: APP_URLS.clean,
     status: 'listo',
   },
   {
@@ -328,7 +328,7 @@ const CARDS: SuiteCard[] = [
       'Dibuja tu firma o sello con lápiz sensible a presión, quita el fondo blanco automáticamente, guárdalo en tu galería local y colócalo sobre PDFs en la posición que quieras. 100% local.',
     icon: <PenTool className="w-6 h-6" aria-hidden />,
     accent: 'text-cyan-100',
-    url: null,
+    url: APP_URLS.ink,
     status: 'listo',
   },
   {
@@ -338,7 +338,7 @@ const CARDS: SuiteCard[] = [
       'Calculadora científica con grados/radianes, teclado en pantalla e historial de sesión, más graficador 2D de hasta 6 funciones f(x) simultáneas con zoom, paneo por arrastre, detección de discontinuidades y rejilla inteligente. 100% local.',
     icon: <Sigma className="w-6 h-6" aria-hidden />,
     accent: 'text-emerald-400',
-    url: null,
+    url: APP_URLS.math,
     status: 'listo',
   },
   {
@@ -348,7 +348,7 @@ const CARDS: SuiteCard[] = [
       'Crea facturas para freelancers con emisor, cliente, conceptos ilimitados, impuestos porcentuales, 9 monedas y notas; descarga el PDF (jsPDF en el navegador) y lleva un historial vivo en IndexedDB con edición y duplicado. 100% local.',
     icon: <ReceiptText className="w-6 h-6" aria-hidden />,
     accent: 'text-teal-100',
-    url: null,
+    url: APP_URLS.invoice,
     status: 'listo',
   },
   {
@@ -358,7 +358,7 @@ const CARDS: SuiteCard[] = [
       'Recetario local con ingredientes, pasos, etiquetas y favoritas; escala porciones y genera listas de compras agregadas (une ingredientes repetidos de varias recetas) y agrupadas por pasillo del supermercado. 100% local.',
     icon: <ChefHat className="w-6 h-6" aria-hidden />,
     accent: 'text-lime-200',
-    url: null,
+    url: APP_URLS.chef,
     status: 'listo',
   },
 ]
@@ -643,8 +643,9 @@ export function StudioHome() {
         />
       ))}
 
-      {/* escorpión holográfico de Vortex Company paseando por toda la pantalla */}
-      <HudScorpion />
+      {/* familia de escorpiones holográficos de Vortex Company (madre + crías)
+          paseando por toda la pantalla */}
+      <HudScorpions />
 
       {/* decorado lateral izquierdo (solo pantallas grandes) */}
       <div className="fixed left-6 top-24 z-0 hidden lg:flex flex-col items-center gap-7 opacity-80 pointer-events-none" aria-hidden>
