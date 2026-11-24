@@ -1,15 +1,15 @@
 'use client'
 
-// Flotilla de escorpiones holográficos de Vortex Company: la mascota-tótem
+// Enjambre de escorpiones holográficos de Vortex Company: la mascota-tótem
 // de Vórtex Studio. SVG puro estilo HUD teal (pinzas que palpan, 8 patas
 // articuladas, cola en S con aguijón brillante) que pasea por TODA la
 // pantalla siguiendo trayectorias de Lissajous animadas por fotogramas
 // (requestAnimationFrame): movimiento continuo a 60 fps, gira hacia la
 // dirección de la marcha y frena suavemente en las curvas.
 //
-// Ahora patrulla toda la familia: la madre (grande, al frente) y dos crías
-// con ruta, velocidad, tamaño y profundidad propias, para que la familia
-// Vortex recorra el portal entero de punta a punta.
+// Ahora patrulla todo el enjambre: la madre (grande, al frente) y diez
+// fieras EXACTAMENTE del mismo tamaño con ruta, velocidad y profundidad
+// propias, para que la familia Vortex recorra el portal entero.
 
 import { useEffect, useRef } from 'react'
 
@@ -128,13 +128,13 @@ interface ScorpionConfig {
   ay: number
   /** punto inicial dentro del ciclo */
   start: number
-  /** transparencia (las crías, un poco más holo) */
+  /** transparencia (las fieras, un poco más holo) */
   opacity: number
   /** clase de profundidad z */
   z: string
   /** pose fija si el usuario prefiere movimiento reducido */
   pose: string
-  /** visibilidad responsive (p. ej. la cría menor solo en desktop) */
+  /** visibilidad responsive (p. ej. las fieras extra solo en desktop) */
   className?: string
 }
 
@@ -152,6 +152,15 @@ function Scorpion({ cfg }: { cfg: ScorpionConfig }) {
     let raf = 0
     let t = cfg.start
     let last = performance.now()
+    // tamaño cacheado (se recalcula solo al redimensionar) para que el bucle
+    // no lea el DOM cada fotograma: con 11 escorpiones, cero layout thrashing
+    let w = el.offsetWidth
+    let h = el.offsetHeight
+    const onResize = () => {
+      w = el.offsetWidth
+      h = el.offsetHeight
+    }
+    window.addEventListener('resize', onResize)
     const step = (now: number) => {
       const dt = Math.min(50, now - last)
       last = now
@@ -165,20 +174,21 @@ function Scorpion({ cfg }: { cfg: ScorpionConfig }) {
       const dx = cfg.ax * W * cfg.fx * Math.cos(cfg.fx * t + cfg.phaseX)
       const dy = cfg.ay * H * cfg.fy * Math.cos(cfg.fy * t + cfg.phaseY)
       const ang = Math.atan2(dy, dx) * (180 / Math.PI)
-      const w = el.offsetWidth
-      const h = el.offsetHeight
       el.style.transform = `translate(${(x - w / 2).toFixed(1)}px, ${(y - h / 2).toFixed(1)}px) rotate(${ang.toFixed(1)}deg)`
       raf = requestAnimationFrame(step)
     }
     raf = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(raf)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', onResize)
+    }
   }, [cfg])
 
   return (
     <div
       ref={ref}
       className={'hud-scorpion fixed left-0 top-0 pointer-events-none ' + cfg.z + (cfg.className ? ' ' + cfg.className : '')}
-      style={{ opacity: cfg.opacity }}
+      style={{ opacity: cfg.opacity, willChange: 'transform' }}
       aria-hidden
     >
       <div style={{ width: cfg.size }}>
@@ -188,9 +198,13 @@ function Scorpion({ cfg }: { cfg: ScorpionConfig }) {
   )
 }
 
-/* ---------- la familia Vortex: madre al frente + dos crías ---------- */
+/* ---------- el enjambre Vortex: la madre al frente + su camada de fieras ---------- */
+// Todas las fieras nacen EXACTAMENTE del mismo tamaño; lo que las distingue
+// es su ruta de Lissajous, su velocidad y su transparencia (profundidad).
+const FIERA_SIZE = 'clamp(42px, 4.2vw, 64px)'
+
 const FLEET: ScorpionConfig[] = [
-  // LA MADRE: un poquito más grande que antes, camina al frente (z-20)
+  // LA MADRE: la única grande, camina al frente (z-20)
   {
     size: 'clamp(64px, 7vw, 108px)',
     speed: 0.00024,
@@ -205,37 +219,23 @@ const FLEET: ScorpionConfig[] = [
     z: 'z-20',
     pose: 'translate(70vw, 18vh) rotate(-10deg)',
   },
-  // CRÍA MAYOR: ruta distinta, un paso más vivo, medio paso detrás (z-10)
-  {
-    size: 'clamp(46px, 4.9vw, 76px)',
-    speed: 0.0003,
-    fx: 1.12,
-    fy: 1.62,
-    phaseX: 2.4,
-    phaseY: 0.4,
-    ax: 0.4,
-    ay: 0.4,
-    start: 3.1,
-    opacity: 0.8,
-    z: 'z-10',
-    pose: 'translate(12vw, 24vh) rotate(8deg)',
-  },
-  // CRÍA MENOR: la más chiquita y lenta, patrulla al fondo (z-0, solo desktop)
-  {
-    size: 'clamp(34px, 3.7vw, 56px)',
-    speed: 0.00019,
-    fx: 0.92,
-    fy: 1.34,
-    phaseX: 4.4,
-    phaseY: 2.9,
-    ax: 0.46,
-    ay: 0.44,
-    start: 5.6,
-    opacity: 0.55,
-    z: 'z-0',
-    pose: 'translate(78vw, 72vh) rotate(-14deg)',
-    className: 'hidden md:block',
-  },
+  // LAS 10 FIERAS: mismo tamaño para todas, cada una con su ruta, su paso y
+  // su capa de profundidad; en móvil solo acompañan las 4 primeras
+  ...Array.from({ length: 10 }, (_, i) => ({
+    size: FIERA_SIZE,
+    speed: 0.00017 + (i % 5) * 0.000037,
+    fx: 0.9 + (i % 4) * 0.13,
+    fy: 1.28 + (i % 3) * 0.24,
+    phaseX: i * 0.63,
+    phaseY: i * 1.07 + 0.5,
+    ax: 0.4 + (i % 2) * 0.04,
+    ay: 0.38 + (i % 3) * 0.03,
+    start: i * 2.17 + 1.4,
+    opacity: 0.5 + (i % 5) * 0.1,
+    z: i % 2 === 0 ? 'z-10' : 'z-0',
+    pose: `translate(${(6 + i * 8.7).toFixed(1)}vw, ${(i % 2 === 0 ? 10 : 66) + (i % 3) * 7}vh) rotate(${(i % 2 === 0 ? -1 : 1) * (8 + i * 1.3)}deg)`,
+    className: i < 4 ? undefined : 'hidden md:block',
+  })),
 ]
 
 export function HudScorpions() {
